@@ -28,6 +28,7 @@ public class Calculation extends Items {
 	
 	else if(ItemType.equals("Manufactured")) {
 		//12.5% of the item cost + 2% of (item cost + 12.5% of item cost)
+		//TODO getBusinessRule(itemType)
 		double i= ((12.5/100.0)*ItemPrice);
 		double j=(2/100.0)*(ItemPrice+i);
 		double f=i+j+ItemPrice;
