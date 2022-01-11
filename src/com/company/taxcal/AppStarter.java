@@ -50,14 +50,14 @@ public class AppStarter {
 			String option= br.readLine();
 			if(option.equals("No")) {
 				System.out.println(it);
-				System.out.println(Arrays.toString(b.EffectiveCostCalculator().toArray()));
+				//System.out.println(Arrays.toString(b.EffectiveCostCalculator().toArray()));
 				Calculator.ItemCostCalculator(b.EffectiveCostCalculator());
 	            System.out.println("THANK YOU");
 				break;
 			}
 			else {
 				System.out.println(it);
-				System.out.println(Arrays.toString(b.EffectiveCostCalculator().toArray()));
+				//System.out.println(Arrays.toString(b.EffectiveCostCalculator().toArray()));
 				Calculator.ItemCostCalculator(b.EffectiveCostCalculator());
 				continue;
 			}
