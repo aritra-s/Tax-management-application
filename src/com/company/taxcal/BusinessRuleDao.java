@@ -18,20 +18,13 @@ public class BusinessRuleDao {
 
 	public List<Double> EffectiveCostCalculator(){
 		List<Double> effectivePrice=new ArrayList<Double>();
-		//List<Double> tax=new ArrayList<Double>();
-		//Iterator<Double> it = itemPrice.iterator();
-		//Iterator<String> its = itemType.iterator();
 		 
 		for (Entry<Double, String> e : map.entrySet()) {
-			 
-        //while (it.hasNext()) {
  
         	if(e.getValue().equals("Raw")) {
     			//12.5% of the item cost
     			double eff= (e.getKey()+((12.5/100.0)*e.getKey()));
     			effectivePrice.add(eff);
-    			//System.out.println(eff);
-    			//TaxView.view(eff, itemPrice);
     		}
     		
     		else if(e.getValue().equals("Manufactured")) {
@@ -40,7 +33,7 @@ public class BusinessRuleDao {
     			double j=(2/100.0)*(e.getKey()+i);
     			double f=i+j+e.getKey();
     			effectivePrice.add(f);
-    			//TaxView.view(f, ItemPrice);
+    			
     		}
     		
     		else {
@@ -53,19 +46,18 @@ public class BusinessRuleDao {
     			if(e.getKey()+import_duty<=100.0) {
     			double f=e.getKey()+import_duty+5;
     			effectivePrice.add(f);
-    			//TaxView.view(f, ItemPrice);
+    			
     			}
     			else if(e.getKey()+import_duty<=200.0) {
     				double f=e.getKey()+import_duty+10;
     				effectivePrice.add(f);
-    				//TaxView.view(f, ItemPrice);
+    				
     			}
     			else {
     				double s=5/100.0;
     				double fs=s*e.getKey();
     				double f=e.getKey()+import_duty+fs;
     				effectivePrice.add(f);
-    				//TaxView.view(f, ItemPrice);
     				
     			}
     		}
