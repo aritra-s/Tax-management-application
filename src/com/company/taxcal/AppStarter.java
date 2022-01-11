@@ -62,6 +62,9 @@ public class AppStarter {
 				continue;
 			}
 		}
+	catch(IOException e) {
+	  e.printStackTrace();
+	}
 			
 
 	}finally {
