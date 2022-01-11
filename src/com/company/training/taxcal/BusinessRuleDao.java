@@ -1,25 +1,39 @@
-package com.company.taxcal;
+package com.company.training.taxcal;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.company.training.model.BusinessRule;
+
 
 public class BusinessRuleDao {
 	
-	private  Map<Double, String> map;
-	
-	public BusinessRuleDao(Map<Double, String> map) {
-		super();
-		this.map = map;
+	//(type, businessRule)
+	private  Map<String, BusinessRule> businessRuleMap;
+	public BusinessRuleDao() {
+		businessRuleMap = new HashMap<>();
+		BusinessRule rawBusinessRule = new BusinessRule();
+		rawBusinessRule.setBasicTax(12.5f);
+		businessRuleMap.put("Raw", rawBusinessRule);
+		//TODO similary add values for other types
 	}
 
+	
+	public BusinessRule getBusinessRule(String type) {
+		BusinessRule rule = businessRuleMap.get(type);
+		return rule;
+	}
+	
+	//TODO move this to ItemCostCalculator
+	
 	public List<Double> EffectiveCostCalculator(){
 		List<Double> effectivePrice=new ArrayList<Double>();
 		 
-		for (Entry<Double, String> e : map.entrySet()) {
+		for (Entry<Double, String> e : businessRuleMap.entrySet()) {
  
         	if(e.getValue().equals("Raw")) {
     			//12.5% of the item cost
