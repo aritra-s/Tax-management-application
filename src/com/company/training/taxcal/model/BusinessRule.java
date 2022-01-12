@@ -1,4 +1,4 @@
-package com.company.training.model;
+package com.company.training.taxcal.model;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ public class BusinessRule {
 	private Float basicTax;
 	private Float addedTax;
 	private Float importDuty;
-	private List<Surcharge> surcharges;
+	private Surcharge surcharge;
 
 	public Float getBasicTax() {
 		return basicTax;
@@ -33,12 +33,12 @@ public class BusinessRule {
 		this.importDuty = importDuty;
 	}
 
-	public List<Surcharge> getSurcharges() {
-		return surcharges;
+	public Surcharge getSurcharge() {
+		return surcharge;
 	}
 
-	public void setSurcharges(List<Surcharge> surcharges) {
-		this.surcharges = surcharges;
+	public void setSurcharge(Surcharge surcharge) {
+		this.surcharge = surcharge;
 	}
 
 }

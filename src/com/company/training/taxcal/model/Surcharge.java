@@ -1,4 +1,4 @@
-package com.company.training.model;
+package com.company.training.taxcal.model;
 
 public class Surcharge {
 	

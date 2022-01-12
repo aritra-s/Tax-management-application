@@ -1,13 +1,15 @@
 package com.company.training.taxcal;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.company.training.model.BusinessRule;
+import com.company.training.taxcal.model.BusinessRule;
+import com.company.training.taxcal.model.Surcharge;
 
 
 public class BusinessRuleDao {
@@ -16,19 +18,26 @@ public class BusinessRuleDao {
 	private  Map<String, BusinessRule> businessRuleMap;
 	public BusinessRuleDao() {
 		businessRuleMap = new HashMap<>();
+		//RAW
 		BusinessRule rawBusinessRule = new BusinessRule();
 		rawBusinessRule.setBasicTax(12.5f);
-		
-		
 		businessRuleMap.put("Raw", rawBusinessRule);
-		//TODO similarly add values for other types
+
+		//MANUFACTURED
 		BusinessRule manufacturedBusinessRule= new BusinessRule();
 		manufacturedBusinessRule.setAddedTax(2.0f);
 		businessRuleMap.put("Manufactured", manufacturedBusinessRule);
 		
+		//IMPORTED
 		BusinessRule importedBusinessRule= new BusinessRule();
 		importedBusinessRule.setImportDuty(10.0f);
+		Surcharge surcharge=new Surcharge();
+		surcharge.setSurchargeSlab1(5);
+		surcharge.setSurchargeSlab2(10);
+		importedBusinessRule.setSurcharges(Arrays.asList(surcharge));
 		businessRuleMap.put("Imported", importedBusinessRule);
+		
+		
 	}
 
 	
