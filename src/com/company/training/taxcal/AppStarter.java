@@ -3,6 +3,7 @@ package com.company.training.taxcal;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -16,11 +17,12 @@ public class AppStarter {
 
 		BufferedReader br = null;
 		try {
-			// TODO use try with resources
+			// TODO use try with resources--- will review later
 			br = new BufferedReader(new java.io.InputStreamReader(System.in));
 			System.out.println("Welcome to Tax Management App");
 
 			List<Item> items = new ArrayList<>();
+			
 			while (true) {
 				Item item = new Item();
 				System.out.println("enter name");
@@ -42,9 +44,13 @@ public class AppStarter {
 					continue;
 				}
 			}
+			//Item it=new Item();
+			//System.out.println(items);
+			List<ItemResponse> result = new ItemCostCalculator().calculatItemCost(items);
+		
+			//System.out.println(result);
+			ViewGenerator.printItemsCost(result);
 			
-			List<ItemResponse> result = new ItemCostCalculator().calculatItemCost(items);			
-			ViewGenerator.view(price);
 
 		} catch (IOException e) {
 			e.printStackTrace();
