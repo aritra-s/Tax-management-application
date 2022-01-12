@@ -26,6 +26,7 @@ public class BusinessRuleDao {
 		//MANUFACTURED
 		BusinessRule manufacturedBusinessRule= new BusinessRule();
 		manufacturedBusinessRule.setAddedTax(2.0f);
+		manufacturedBusinessRule.setAddedTax(12.5f);
 		businessRuleMap.put("Manufactured", manufacturedBusinessRule);
 		
 		//IMPORTED
@@ -34,7 +35,7 @@ public class BusinessRuleDao {
 		Surcharge surcharge=new Surcharge();
 		surcharge.setSurchargeSlab1(5);
 		surcharge.setSurchargeSlab2(10);
-		importedBusinessRule.setSurcharges(Arrays.asList(surcharge));
+		importedBusinessRule.setSurcharge(surcharge);
 		businessRuleMap.put("Imported", importedBusinessRule);
 		
 		
