@@ -9,6 +9,8 @@ public class InvalidBusinessRuleDao extends BusinessRuleDao {
 	@Override
 	public void BusinessRuleDaoCatagory(Map<String, BusinessRule> businessRuleMap) {
 
+		BusinessRule invalidBusinessRule= new BusinessRule();
+		businessRuleMap.put("Invalid", invalidBusinessRule);
 	}
 
 	@Override

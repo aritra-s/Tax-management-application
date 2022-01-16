@@ -17,11 +17,7 @@ public class AppStarter {
 
 	public static void main(String[] args)  {
 
-		//BufferedReader br = null;
 		try(BufferedReader br = new BufferedReader(new java.io.InputStreamReader(System.in))) {
-			//TODO add ReadMe to the project
-			// TODO use try with resources--- will review later
-			//br = new BufferedReader(new java.io.InputStreamReader(System.in));
 			System.out.println("Welcome to Tax Management App");
 			List<Item> items = new ArrayList<>();
 			while (true) {
@@ -36,7 +32,6 @@ public class AppStarter {
 				}
 			}
 			List<ItemResponse> result = new ItemCostCalculatorFactory().calculatItemCost(items);		
-			//System.out.println(result);
 			ViewGenerator.printItemsCost(result);
 			
 

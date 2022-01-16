@@ -27,26 +27,7 @@ public class ItemCostCalculatorFactory extends BaseItemCostCalculatorFactory{
 	private BusinessRuleDao brDaoImported;
 	private BusinessRuleDao brDaoInvalid;
     private Map<String, BusinessRule> businessRuleMap;
-	//public ItemCostCalculatorFactory() {
-//		brDaoRaw = new RawBusinessRuleDao();
-//		brDaoManufactured = new ManufacturedBusinessRuleDao();
-//		brDaoImported = new ImportedBusinessRuleDao();
-//		businessRuleMap = new HashMap<>();
-//		
-//		brDaoRaw.BusinessRuleDaoCatagory(businessRuleMap);
-//		brDaoManufactured.BusinessRuleDaoCatagory(businessRuleMap);
-//		brDaoImported.BusinessRuleDaoCatagory(businessRuleMap);
-		
-	//}
-
-	// TODO implement factory pattern in here
-	// TODO implement Inversion of control
-	
-	
-
-	@Override
-	public List<ItemResponse> calculatItemCost(List<Item> items) {
-		List<ItemResponse> result = new ArrayList<>();
+	public ItemCostCalculatorFactory() {
 		brDaoRaw = new RawBusinessRuleDao();
 		brDaoManufactured = new ManufacturedBusinessRuleDao();
 		brDaoImported = new ImportedBusinessRuleDao();
@@ -57,15 +38,21 @@ public class ItemCostCalculatorFactory extends BaseItemCostCalculatorFactory{
 		brDaoManufactured.BusinessRuleDaoCatagory(businessRuleMap);
 		brDaoImported.BusinessRuleDaoCatagory(businessRuleMap);
 		
-//		Map<String, BusinessRule> businessRuleMap;
-		//businessRuleMap = new HashMap<>();
+	}
+
+	// TODO implement Inversion of control
+	
+	@Override
+	public List<ItemResponse> calculatItemCost(List<Item> items) {
+		List<ItemResponse> result = new ArrayList<>();
+
 		for (Item item : items) {
 			BusinessRule ruleRaw = brDaoRaw.getBusinessRule(item.getItemType(),businessRuleMap);
 			BusinessRule ruleManufactured = brDaoManufactured.getBusinessRule(item.getItemType(),businessRuleMap);
 			BusinessRule ruleImported = brDaoImported.getBusinessRule(item.getItemType(),businessRuleMap);
 			BusinessRule ruleInvalid = brDaoInvalid.getBusinessRule(item.getItemType(), businessRuleMap);
 			ItemResponse response = ItemCostCalculatorHelper.initializeItemResponse(item);
-			// output
+			
 			if (ITEM_TYPE_RAW.equals(item.getItemType())) {
 				ItemCostCalculatorHelper.populateRawItemCost(item, ruleRaw, response);
 			} else if (ITEM_TYPE_MANUFACTURED.equals(item.getItemType())) {
