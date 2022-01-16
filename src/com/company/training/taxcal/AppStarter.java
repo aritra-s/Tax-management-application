@@ -8,19 +8,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.company.training.factory.service.ItemCostCalculatorFactory;
 import com.company.training.taxcal.model.Item;
 import com.company.training.taxcal.model.ItemResponse;
+import com.company.training.utils.ViewGenerator;
 
 public class AppStarter {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args)  {
 
-		BufferedReader br = null;
-		try {
-			//TODO create separate package for service, dao and utils
+		//BufferedReader br = null;
+		try(BufferedReader br = new BufferedReader(new java.io.InputStreamReader(System.in))) {
 			//TODO add ReadMe to the project
 			// TODO use try with resources--- will review later
-			br = new BufferedReader(new java.io.InputStreamReader(System.in));
+			//br = new BufferedReader(new java.io.InputStreamReader(System.in));
 			System.out.println("Welcome to Tax Management App");
 			List<Item> items = new ArrayList<>();
 			while (true) {
@@ -34,17 +35,15 @@ public class AppStarter {
 					continue;
 				}
 			}
-			List<ItemResponse> result = new ItemCostCalculator().calculatItemCost(items);		
+			List<ItemResponse> result = new ItemCostCalculatorFactory().calculatItemCost(items);		
 			//System.out.println(result);
 			ViewGenerator.printItemsCost(result);
 			
 
 		} catch (IOException e) {
 			e.printStackTrace();
-
-		} finally {
-			br.close();
 		}
+
 
 	}
 

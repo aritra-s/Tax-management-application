@@ -4,7 +4,6 @@ public class Surcharge {
 	
 	private Integer surchargeSlab1;
 	private Integer surchargeSlab2;
-	//private Integer type; //flat or percentage-- will review later
 	public Integer getSurchargeSlab1() {
 		return surchargeSlab1;
 	}
