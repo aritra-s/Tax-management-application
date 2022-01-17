@@ -6,9 +6,9 @@ import com.company.training.taxcal.model.ItemResponse;
 
 public final class ViewGenerator {
 
-	private ViewGenerator() {
-		super();
-	}
+//	private ViewGenerator() {
+//		super();
+//	}
 
 	public static void printItemsCost(List<ItemResponse> result) {
 		int i = 1;
