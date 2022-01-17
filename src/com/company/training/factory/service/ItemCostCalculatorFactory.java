@@ -42,6 +42,10 @@ public class ItemCostCalculatorFactory extends BaseItemCostCalculatorFactory{
 
 	// TODO implement Inversion of control
 	
+	//Interface :-  ItemCostCalculator :- calculateItemCost(item);
+	//Class 1 :- RawItemCostCalculator implements ItemCostCalculator
+	//Class 2 :- ManufacturedItemCostCalcualtor implements ItemCostCalculator
+	//Class 3 :- ImportedItemCostCalculator implements ItemCostCalculator
 	@Override
 	public List<ItemResponse> calculatItemCost(List<Item> items) {
 		List<ItemResponse> result = new ArrayList<>();

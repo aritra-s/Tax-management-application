@@ -3,10 +3,7 @@ package com.company.training.taxcal;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import com.company.training.factory.service.ItemCostCalculatorFactory;
 import com.company.training.taxcal.model.Item;
