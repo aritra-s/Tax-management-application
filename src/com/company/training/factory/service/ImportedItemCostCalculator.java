@@ -1,5 +1,6 @@
 package com.company.training.factory.service;
 
+import com.company.training.dao.BusinessRuleDao;
 import com.company.training.taxcal.model.BusinessRule;
 import com.company.training.taxcal.model.Item;
 import com.company.training.taxcal.model.ItemResponse;
@@ -8,7 +9,16 @@ import com.company.training.taxcal.model.Surcharge;
 public class ImportedItemCostCalculator implements ItemCostCalculator {
 
 	@Override
-	public void populateItemCost(BusinessRule rule, Surcharge surcharge, Item item, ItemResponse response) {
+	public ItemResponse calculateCost(Item item) {
+		BusinessRuleDao brDao= new BusinessRuleDao();
+		BusinessRule rule = brDao.getBusinessRule(item.getItemType());
+		ItemResponse response = initializeItemResponse(item);
+		populateItemCost(rule,rule.getSurcharge(), item, response);
+		return response;
+	}
+	
+	
+	private void populateItemCost(BusinessRule rule, Surcharge surcharge, Item item, ItemResponse response) {
 		/*
 		 * 10% import duty on item cost + a surcharge (surcharge is: Rs. 5 if the final
 		 * cost after applying tax & import duty is up to Rs. 100, Rs. 10 if the cost
@@ -36,5 +46,15 @@ public class ImportedItemCostCalculator implements ItemCostCalculator {
 		}
 
 	}
+	
+	private ItemResponse initializeItemResponse(Item item) {
+		ItemResponse response = new ItemResponse();
+		response.setItemName(item.getItemName());
+		response.setItemType(item.getItemType());
+		response.setItemPrice(item.getPrice());
+		response.setQuantity(item.getQuantity());
+		return response;
+	}
+
 
 }

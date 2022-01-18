@@ -10,6 +10,6 @@ import com.company.training.taxcal.model.Surcharge;
 public interface ItemCostCalculator {
 
 	
-  void populateItemCost(BusinessRule rule,Surcharge surcharge, Item item, ItemResponse response);
+	ItemResponse calculateCost(Item item);
 		
 }

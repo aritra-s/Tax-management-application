@@ -14,48 +14,42 @@ public class ItemCostCalculatorFactory {
 
 	private static final String ITEM_TYPE_MANUFACTURED = "Manufactured";
 	private static final String ITEM_TYPE_RAW = "Raw";
-	private BusinessRuleDao brDao;
 
-	public ItemCostCalculatorFactory() {
-		brDao = new BusinessRuleDao();
-	}
 	// TODO implement Inversion of control
 	
 
 	public List<ItemResponse> calculatItemCost(List<Item> items) {
 		List<ItemResponse> result = new ArrayList<>();
 		for (Item item : items) {
-			BusinessRule rule = brDao.getBusinessRule(item.getItemType());
-			ItemResponse response = initializeItemResponse(item);
-			// output
+
 			if (ITEM_TYPE_RAW.equals(item.getItemType())) {
 				
 				ItemCostCalculator calculator= new RawItemCostCalculator();
-				calculator.populateItemCost(rule, null, item, response);
+				result.add(calculator.calculateCost(item));
 				
 			} else if (ITEM_TYPE_MANUFACTURED.equals(item.getItemType())) {
 				
 				ItemCostCalculator calculator= new ManufacturedItemCostCalculator();
-				calculator.populateItemCost(rule,null, item, response);
+				result.add(calculator.calculateCost(item));
 				
 			} else {
 				
 				ItemCostCalculator calculator= new ImportedItemCostCalculator();
-				calculator.populateItemCost(rule,rule.getSurcharge(), item, response);
+				result.add(calculator.calculateCost(item));
 				
 			}
-			result.add(response);
+			//result.add(response);
 		}
 		return result;
 	}
 
 
-	private ItemResponse initializeItemResponse(Item item) {
-		ItemResponse response = new ItemResponse();
-		response.setItemName(item.getItemName());
-		response.setItemType(item.getItemType());
-		response.setItemPrice(item.getPrice());
-		response.setQuantity(item.getQuantity());
-		return response;
-	}
+//	private ItemResponse initializeItemResponse(Item item) {
+//		ItemResponse response = new ItemResponse();
+//		response.setItemName(item.getItemName());
+//		response.setItemType(item.getItemType());
+//		response.setItemPrice(item.getPrice());
+//		response.setQuantity(item.getQuantity());
+//		return response;
+//	}
 }
