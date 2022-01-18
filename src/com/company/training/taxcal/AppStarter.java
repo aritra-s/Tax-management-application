@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.company.training.controller.ItemController;
 import com.company.training.factory.service.ItemCostCalculatorFactory;
 import com.company.training.taxcal.model.Item;
 import com.company.training.taxcal.model.ItemResponse;
@@ -21,9 +20,9 @@ public class AppStarter {
 		try(BufferedReader br = new BufferedReader(new java.io.InputStreamReader(System.in))) {
 			System.out.println("Welcome to Tax Management App");
 			List<Item> items = new ArrayList<>();
-			Item model;
+			
 			while (true) {
-				model=readItemDetails(br, items);
+				readItemDetails(br, items);
 				System.out.println("enter Yes if you want to continue otherwise enter No");
 				String option = br.readLine();
 				
@@ -33,14 +32,9 @@ public class AppStarter {
 					continue;
 				}
 			}
-			//List<ItemResponse> result = new ItemCostCalculatorFactory().calculatItemCost(items);		
-			//ViewGenerator.printItemsCost(result);
-			
-			// model=readItemDetails(br, items);
-			ViewGenerator view = new ViewGenerator();
-			ItemController controller= new ItemController(model, view);
-			controller.updateView(items);
-
+			List<ItemResponse> result = new ItemCostCalculatorFactory().calculatItemCost(items);		
+			ViewGenerator.printItemsCost(result);
+		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -48,7 +42,7 @@ public class AppStarter {
 
 	}
 
-	private static Item readItemDetails(BufferedReader br, List<Item> items) throws IOException {
+	private static void readItemDetails(BufferedReader br, List<Item> items) throws IOException {
 		Item item = new Item();
 		System.out.println("enter name");
 		item.setItemName(br.readLine());
@@ -59,6 +53,6 @@ public class AppStarter {
 		System.out.println("enter type");
 		item.setItemType(br.readLine());
 		items.add(item);
-		return item;
+		
 	}
 }
