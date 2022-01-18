@@ -38,18 +38,11 @@ public class ItemCostCalculatorFactory {
 				result.add(calculator.calculateCost(item));
 				
 			}
-			//result.add(response);
+			
 		}
 		return result;
 	}
 
 
-//	private ItemResponse initializeItemResponse(Item item) {
-//		ItemResponse response = new ItemResponse();
-//		response.setItemName(item.getItemName());
-//		response.setItemType(item.getItemType());
-//		response.setItemPrice(item.getPrice());
-//		response.setQuantity(item.getQuantity());
-//		return response;
-//	}
+
 }
