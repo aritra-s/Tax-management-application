@@ -21,11 +21,7 @@ public class ItemCostCalculatorFactory {
 	}
 	// TODO implement Inversion of control
 	
-	
-	//Interface :-  ItemCostCalculator :- calculateItemCost(item);
-		//Class 1 :- RawItemCostCalculator implements ItemCostCalculator
-		//Class 2 :- ManufacturedItemCostCalcualtor implements ItemCostCalculator
-		//Class 3 :- ImportedItemCostCalculator implements ItemCostCalculator
+
 	public List<ItemResponse> calculatItemCost(List<Item> items) {
 		List<ItemResponse> result = new ArrayList<>();
 		for (Item item : items) {
